@@ -1,0 +1,27 @@
+#methanogene 16s
+!pip install biopython
+from Bio import Entrez, SeqIO
+
+# List of sequence IDs
+sequence_ids = [
+
+]
+
+# Function to fetch FASTA sequences and save them
+def fetch_fasta_sequences(ids, output_file="methanesequences16s.fasta"):
+    Entrez.email = "your-email@example.com"  # Replace with your email
+    batch_size = 100  # Fetch in batches to avoid NCBI limits
+
+    for i in range(0, len(ids), batch_size):
+        batch_ids = ids[i:i+batch_size]
+        print(f"Fetching batch {i//batch_size + 1}...")
+        with Entrez.efetch(db="nucleotide", id=batch_ids, rettype="fasta", retmode="text") as handle:
+            fasta_data = handle.read()
+            fasta_data = fasta_data.replace('>', '\n>')  # Ensure '>' precedes each accession ID
+            with open(output_file, "a") as f:
+                f.write(fasta_data)
+
+    print(f"FASTA sequences saved to {output_file}")
+
+# Call the function
+fetch_fasta_sequences()
