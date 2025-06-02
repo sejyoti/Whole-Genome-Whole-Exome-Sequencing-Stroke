@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Exit on error
+set -e
+
+# Variables
+REF="/home/sejyoti/Downloads/Biocompin/Stroke_WES/hg38/hg38.fa"
+READS_DIR="/home/sejyoti/Downloads/Biocompin/Stroke_WES/reads"
+OUT_DIR="/home/sejyoti/Downloads/Biocompin/Stroke_WES/alignment_output"
+
+# Create output directory
+mkdir -p "$OUT_DIR"
+
+echo "Indexing reference (if not already indexed)..."
+bwa index "$REF"
+
+# Align Non Recurrent sample
+echo "Aligning Non Recurrent sample..."
+bwa mem -t 8 -R "@RG\tID:NR1\tSM:NonRecurrent\tPL:ILLUMINA\tLB:Lib1" "$REF" \
+    "$READS_DIR/Non Recurrent_R1.fastp.fastq.gz" \
+    "$READS_DIR/Non Recurrent_R2.fastp.fastq.gz" \
+    > "$OUT_DIR/Non_Recurrent.sam"
+
+# Convert to BAM, sort and index
+echo "Processing Non Recurrent alignment..."
+samtools view -S -b "$OUT_DIR/Non_Recurrent.sam" | samtools sort -o "$OUT_DIR/Non_Recurrent.sorted.bam"
+samtools index "$OUT_DIR/Non_Recurrent.sorted.bam"
+rm "$OUT_DIR/Non_Recurrent.sam"  # Optional cleanup
+
+# Align Recurrent event sample
+echo "Aligning Recurrent event sample..."
+bwa mem -t 8 -R "@RG\tID:RE1\tSM:RecurrentEvent\tPL:ILLUMINA\tLB:Lib2" "$REF" \
+    "$READS_DIR/Recurrent event_R1.fastp.fastq.gz" \
+    "$READS_DIR/Recurrent event_R2.fastp.fastq.gz" \
+    > "$OUT_DIR/Recurrent_event.sam"
+
+# Convert to BAM, sort and index
+echo "Processing Recurrent event alignment..."
+samtools view -S -b "$OUT_DIR/Recurrent_event.sam" | samtools sort -o "$OUT_DIR/Recurrent_event.sorted.bam"
+samtools index "$OUT_DIR/Recurrent_event.sorted.bam"
+rm "$OUT_DIR/Recurrent_event.sam"  # Optional cleanup
+
+echo "Alignment and processing complete!"
