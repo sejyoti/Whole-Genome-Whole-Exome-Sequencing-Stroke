@@ -3,8 +3,8 @@
 echo "STEP 5: Collect Alignment & Insert Size Metrics"
 
 # Define paths
-ref="/home/sejyoti/Downloads/Biocompin/Stroke_WES/hg38/hg38.fa"
-aligned_reads="/home/sejyoti/Downloads/Biocompin/Stroke_WES/alignment_output"
+ref="/your directory/hg38/hg38.fa"
+aligned_reads="/your directory/alignment_output"
 
 # ▶️ Non_Recurrent Sample
 
