@@ -4,7 +4,7 @@
 ENV_NAME="gatk-env"  # ← change this if needed
 
 # Define input/output directory
-ALIGN_DIR="/home/sejyoti/Downloads/Biocompin/Stroke_WES/alignment_output"
+ALIGN_DIR="/your directory/alignment_output"
 
 # Activate conda environment
 source ~/anaconda3/etc/profile.d/conda.sh  # Adjust path if needed
