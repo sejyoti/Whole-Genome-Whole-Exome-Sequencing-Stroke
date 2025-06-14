@@ -3,10 +3,10 @@
 echo "STEP 4: Base quality recalibration"
 
 # Define paths
-ref="/home/sejyoti/Downloads/Biocompin/Stroke_WES/hg38/hg38.fa"
-known_sites="/home/sejyoti/Downloads/Biocompin/Stroke_WES/hg38/Homo_sapiens_assembly38.dbsnp138.vcf"
-aligned_reads="/home/sejyoti/Downloads/Biocompin/Stroke_WES/alignment_output"
-data="/home/sejyoti/Downloads/Biocompin/Stroke_WES/alignment_output"
+ref="/your directory/hg38/hg38.fa"
+known_sites="/your directory/hg38/Homo_sapiens_assembly38.dbsnp138.vcf"
+aligned_reads="/your directory/alignment_output"
+data="/your directory/alignment_output"
 
 # ▶️ Non-Recurrent Sample
 
