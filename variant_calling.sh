@@ -3,9 +3,9 @@
 echo "STEP 6: Call Variants - GATK HaplotypeCaller"
 
 # Define directories and files
-ref="/home/sejyoti/Downloads/Biocompin/Stroke_WES/hg38/hg38.fa"
-aligned_reads="/home/sejyoti/Downloads/Biocompin/Stroke_WES/alignment_output"
-results="/home/sejyoti/Downloads/Biocompin/Stroke_WES/alignment_output"  # output in same dir
+ref="/your directory/hg38/hg38.fa"
+aligned_reads="/your directory/alignment_output"
+results="/your directory/alignment_output"  # output in same dir
 
 # 🧪 Call variants for Non_Recurrent sample
 gatk HaplotypeCaller \
