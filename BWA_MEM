@@ -4,9 +4,9 @@
 set -e
 
 # Variables
-REF="/home/sejyoti/Downloads/Biocompin/Stroke_WES/hg38/hg38.fa"
-READS_DIR="/home/sejyoti/Downloads/Biocompin/Stroke_WES/reads"
-OUT_DIR="/home/sejyoti/Downloads/Biocompin/Stroke_WES/alignment_output"
+REF="/your directory/hg38/hg38.fa"
+READS_DIR="/your directory/reads"
+OUT_DIR="/your directory/alignment_output"
 
 # Create output directory
 mkdir -p "$OUT_DIR"
